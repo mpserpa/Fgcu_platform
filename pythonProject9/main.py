@@ -29,13 +29,33 @@ print("Wings Up!")
 print("Create your student account")
 name = input("Enter your name: ")
 print("Welcome", name + ".")
-Id = input("Enter the last 4 digits of your id number: ")
-print("Your full ID number is 9832" + Id)
-print("Your username is: ", name + "_" + Id)
-UserName = input("Please enter the username based on the information provided above: ")
-Phone = input("Enter the last 4 digits of  your phone number: ")
-print("Your current password is:", name + Id + Phone)
-old_password = name + Id + Phone
+
+def generate_username(birthday, phone_number, last_name):
+    # Extract day, month, and year from birthday
+    day, month, year = birthday.split("/") #https://stackoverflow.com/questions/55879461/enter-date-of-birth
+
+    # Extract last 4 digits of phone number
+    last_digits = phone_number[-4:]
+
+    # Generate username in format: username-day month year of birthday-last digits phone number
+    username = f"{last_name.lower()}{day}{month}{year}{last_digits}"
+
+    return username
+
+
+# Get user information
+birthday = input("Enter your birthday (DD/MM/YYYY): ")
+phone_number = input("Enter the last four digits of your phone number: ")
+last_name = input("Enter your last name: ")
+
+# Generate username
+username = generate_username(birthday, phone_number, last_name)
+
+print(f"Your username is: {username}")
+
+
+print("Your current password is:", name + username + phone_number)
+old_password = name + username + phone_number
 password = (input("Introduce a new Password: "))
 if old_password != password:
     print("We have updated your password")
@@ -46,8 +66,8 @@ print("Now, please login with the information provided above: ")
 
 Username = True
 while Username:
-    username = (input("Enter your username: "))
-    if username == UserName:
+    userName = (input("Enter your username: "))
+    if userName == username:
         print("Now, enter your password")
         Username = False
 
@@ -184,3 +204,4 @@ if answer == "yes":
 else:
     print("Please visit the Financial Aid department for scholarship's opportunities.")
 print("Have a good Day!")
+
