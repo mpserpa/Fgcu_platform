@@ -1,0 +1,9 @@
+#Changes Made
+
+https://github.com/mpserpa/FGCU_Student_Grad_Portal/pull/1/commits/a7b56856b8b3093cc7f215192c1fac54d6c07aa8
+
+1) Pasword Protection using system's keyring. Now, it stores the password in encrypted file in the home directory. 
+2) Two-Factor Aunthentication: Now the user needs to choose a security question, give an answer and after that every time the user tries to log In, it will ask
+for username, password and if they are accurate, then it will ask for a the security question's answer. If it is accurate, it will log in if not, it will ask again.
+3) The username now includes @eagle.fgcu.edu as identifier of students in a university. Also now the default password doesn't include the username in it since username
+is public data.
